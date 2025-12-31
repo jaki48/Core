@@ -13,3 +13,6 @@ commands:
   setspawn:
     description: Setze den Spawn-Punkt.
     permission: core.admin.setspawn
+  invsee:
+    description: Inventar von einem anderen Spieler öffnen
+    permission: core.admin.invsee

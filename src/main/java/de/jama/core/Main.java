@@ -13,7 +13,7 @@ public final class Main extends JavaPlugin {
 
         getCommand("spawn").setExecutor(new SpawnCommand(this));
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
-        getCommand("invsee").setExecutor(new InvSeeCommand(this);
+        getCommand("invsee").setExecutor(new InvSeeCommand(this));
     }
 
     @Override
