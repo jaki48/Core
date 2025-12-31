@@ -40,7 +40,7 @@ public class TeleportUtil {
 
                 if (seconds > 0) {
                     player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                            new TextComponent("§7Teleport in §8" + seconds));
+                            new TextComponent("§7Teleport in: " + seconds));
                     seconds--;
                 } else {
                     player.teleport(target);
