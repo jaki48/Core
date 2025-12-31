@@ -31,7 +31,8 @@ public class TeleportUtil {
             public void run() {
                 if (player.getLocation().getBlockX() != startLoc.getBlockX() ||
                         player.getLocation().getBlockZ() != startLoc.getBlockZ()) {
-                    player.sendMessage("§cTeleport abgebrochen! Du hast dich bewegt.");
+                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
+                            new TextComponent("§cTeleport abgebrochen"));
                     pendingTeleports.remove(uuid);
                     this.cancel();
                     return;
@@ -39,7 +40,7 @@ public class TeleportUtil {
 
                 if (seconds > 0) {
                     player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                            new TextComponent("§eTeleport in §6" + seconds + "§e Sekunden... §cSteh still!"));
+                            new TextComponent("§7Teleport in §8" + seconds));
                     seconds--;
                 } else {
                     player.teleport(target);
