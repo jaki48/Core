@@ -8,6 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import de.jama.core.utils.TeleportUtil;
 
 public class SpawnCommand implements CommandExecutor {
 
@@ -39,7 +40,9 @@ public class SpawnCommand implements CommandExecutor {
         float yaw = (float) plugin.getConfig().getDouble("spawn.yaw");
         float pitch = (float) plugin.getConfig().getDouble("spawn.pitch");
 
-        player.teleport(new Location(world, x, y, z, yaw, pitch));
+        Location spawnLoc = new Location(world, x, y, z, yaw, pitch);
+
+        TeleportUtil.teleportWithCountdown(player, spawnLoc, plugin);
         player.sendMessage("§eWillkommen am Spawn!");
 
         return true;
