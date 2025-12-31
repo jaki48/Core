@@ -7,7 +7,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-
+        getCommand("spawn").setExecutor(new SpawnCommand(this));
     }
 
     @Override
