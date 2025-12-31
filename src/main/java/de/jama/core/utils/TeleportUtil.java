@@ -2,6 +2,7 @@ package de.jama.core.utils;
 
 import de.jama.core.Main;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import net.md_5.bungee.api.ChatMessageType;
@@ -18,7 +19,7 @@ public class TeleportUtil {
         UUID uuid = player.getUniqueId();
 
         if (pendingTeleports.containsKey(uuid)) {
-            player.sendMessage("§cDu wirst bereits teleportiert!");
+            player.sendMessage(" §cDu wirst bereits teleportiert!");
             return;
         }
 
@@ -33,6 +34,7 @@ public class TeleportUtil {
                         player.getLocation().getBlockZ() != startLoc.getBlockZ()) {
                     player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                             new TextComponent("§cTeleport abgebrochen"));
+                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 0.5f, 1.0f);
                     pendingTeleports.remove(uuid);
                     this.cancel();
                     return;
@@ -40,10 +42,12 @@ public class TeleportUtil {
 
                 if (seconds > 0) {
                     player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                            new TextComponent("§7Teleport in: " + seconds));
+                            new TextComponent("§7Teleport in: §6" + seconds));
+                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_SNARE, 0.1f, 1.0f);
                     seconds--;
                 } else {
                     player.teleport(target);
+                    player.playSound(player.getLocation(), org.bukkit.Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 2.0f);
                     player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                             new TextComponent("§aTeleportiert!"));
                     pendingTeleports.remove(uuid);

@@ -21,7 +21,7 @@ public class SetSpawnCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (!player.hasPermission("core.admin.setspawn")) {
-            player.sendMessage("§cKeine Rechte!");
+            player.sendMessage(" §cKeine Rechte!");
             return true;
         }
 
@@ -34,7 +34,7 @@ public class SetSpawnCommand implements CommandExecutor {
         plugin.getConfig().set("spawn.pitch", loc.getPitch());
         plugin.saveConfig();
 
-        player.sendMessage("§aSpawn gesetzt!");
+        player.sendMessage(" §aSpawn gesetzt!");
         return true;
     }
 }

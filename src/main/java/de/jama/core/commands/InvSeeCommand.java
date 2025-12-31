@@ -18,12 +18,12 @@ public class InvSeeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(!sender.hasPermission("core.admin.invsee")) {
-            sender.sendMessage("§cPermission denied!");
+            sender.sendMessage(" §cPermission denied!");
             return true;
         }
 
         if(!(args.length == 1)) {
-            sender.sendMessage("§cUsage: /invsee <player>");
+            sender.sendMessage(" §cUsage: /invsee <player>");
             return true;
         }
 

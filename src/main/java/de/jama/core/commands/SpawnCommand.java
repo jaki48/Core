@@ -24,12 +24,12 @@ public class SpawnCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (!player.hasPermission("core.spawn")) {
-            player.sendMessage("§cKeine Rechte!");
+            player.sendMessage(" §cKeine Rechte!");
             return true;
         }
 
         if (plugin.getConfig().get("spawn.world") == null) {
-            player.sendMessage("§cEs wurde noch kein Spawn gesetzt!");
+            player.sendMessage(" §cEs wurde noch kein Spawn gesetzt!");
             return true;
         }
 
@@ -43,8 +43,6 @@ public class SpawnCommand implements CommandExecutor {
         Location spawnLoc = new Location(world, x, y, z, yaw, pitch);
 
         TeleportUtil.teleportWithCountdown(player, spawnLoc, plugin);
-        player.sendMessage("§eWillkommen am Spawn!");
-
         return true;
     }
 }
