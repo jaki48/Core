@@ -16,3 +16,12 @@ commands:
   invsee:
     description: Inventar von einem anderen Spieler öffnen
     permission: core.admin.invsee
+  tpa:
+    description: Sende eine Teleport-Anfrage.
+    permission: core.tpa
+  tpaccept:
+    description: Nimm eine TPA an.
+    permission: core.tpa
+  tpdeny:
+    description: Lehne eine TPA ab.
+    permission: core.tpa
