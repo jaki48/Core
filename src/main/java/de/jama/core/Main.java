@@ -1,17 +1,21 @@
 package de.jama.core;
 
+import de.jama.core.commands.SetSpawnCommand;
+import de.jama.core.commands.SpawnCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        saveDefaultConfig();
 
+        getCommand("spawn").setExecutor(new SpawnCommand(this));
+        getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+
     }
 }
