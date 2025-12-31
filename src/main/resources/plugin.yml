@@ -6,3 +6,10 @@ prefix: 48Core
 authors: [ Jakob48 ]
 description: A Core Plugin
 website: jakob48.de
+commands:
+  spawn:
+    description: Teleportiere dich zum Spawn.
+    permission: core.spawn
+  setspawn:
+    description: Setze den Spawn-Punkt.
+    permission: core.admin.setspawn
