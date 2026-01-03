@@ -22,7 +22,7 @@ public class InvSeeCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if(!sender.hasPermission("core.admin.invsee")) {
-            sender.sendMessage(" §cPermission denied!");
+            sender.sendMessage(" §cKeine Rechte!");
             return true;
         }
 
@@ -34,7 +34,7 @@ public class InvSeeCommand implements CommandExecutor {
         Player target = Bukkit.getPlayer(args[0]);
 
         if(target == null) {
-            sender.sendMessage("§cPlayer not found!");
+            sender.sendMessage(" §cPlayer not found!");
             return true;
         }
 

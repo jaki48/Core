@@ -31,26 +31,26 @@ public class TpaCommand implements CommandExecutor {
 
         if (command.getName().equalsIgnoreCase("tpa")) {
             if (args.length != 1) {
-                player.sendMessage(" §cNutze: /tpa <Spieler>");
+                player.sendMessage("§8[§#ff8400Tᴘᴀ§8] §cɴᴜᴛᴢᴇ: /tpa <Spieler>");
                 return true;
             }
 
             Player target = Bukkit.getPlayer(args[0]);
             if (target == null) {
-                player.sendMessage("\uE006 §cSpieler nicht gefunden.");
+                player.sendMessage("§8[§#ff8400Tᴘᴀ§8] §cѕᴘɪᴇʟᴇʀ ɴɪᴄʜᴛ ɢᴇꜰᴜɴᴅᴇɴ.");
                 return true;
             }
 
             if (target == player) {
-                player.sendMessage("\uE006 §cDu kannst dir selbst keine Anfrage schicken.");
+                player.sendMessage("§8[§#ff8400Tᴘᴀ§8] §cᴅᴜ ᴋᴀɴѕᴛ ᴅɪʀ ɴɪᴄʜᴛ ѕᴇʟʙѕᴛ ᴇɪɴᴇ ᴀɴꜰʀᴀɢᴇ ѕᴇɴᴅᴇɴ!");
                 return true;
             }
 
             requests.put(target.getUniqueId(), player.getUniqueId());
-            player.sendMessage(" §eTPA-Anfrage an §6" + target.getName() + " §egesendet.");
+            player.sendMessage("§8[§#ff8400Tᴘᴀ§8] §eᴛᴘᴀ ᴀɴꜰʀᴀɢᴇ ᴀɴ §6" + target.getName() + " §ɢᴇѕᴇɴᴅᴇᴛ!");
 
             // Klickbare Nachricht bauen
-            TextComponent msg = new TextComponent("§6" + player.getName() + " §7möchte sich zu dir teleportieren.\n");
+            TextComponent msg = new TextComponent("§8[§#ff8400Tᴘᴀ§8] §6" + player.getName() + " §7ᴍöᴄʜᴛᴇ ѕɪᴄʜ ᴢᴜ ᴅɪʀ ᴛᴇʟᴇᴘᴏʀᴛɪᴇʀᴇɴ\n");
 
             TextComponent accept = new TextComponent("§a§l[ANNEHMEN] ");
             accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpaccept"));
@@ -70,18 +70,18 @@ public class TpaCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("tpaccept")) {
             UUID requesterUUID = requests.get(player.getUniqueId());
             if (requesterUUID == null) {
-                player.sendMessage("\uE006 §cDu hast keine offenen Anfragen.");
+                player.sendMessage("§8[§#ff8400Tᴘᴀ§8]  §cᴅᴜ ʜᴀѕᴛ ᴋᴇɪɴᴇ ᴏꜰꜰᴇɴᴇɴ ᴀɴꜰʀᴀɢᴇɴ");
                 return true;
             }
 
             Player requester = Bukkit.getPlayer(requesterUUID);
             if (requester != null) {
-                player.sendMessage("§aAnfrage angenommen.");
-                requester.sendMessage("§a" + player.getName() + " hat deine Anfrage angenommen. Teleport startet...");
+                player.sendMessage("§8[§#ff8400Tᴘᴀ§8] §aᴀɴꜰʀᴀɢᴇ ᴀɴɢᴇɴᴏᴍᴍᴇɴ!");
+                requester.sendMessage("§8[§#ff8400Tᴘᴀ§8] §a" + player.getName() + " ʜᴀᴛ ᴅᴇɪɴᴇ ᴀɴꜰʀᴀɢᴇ ᴀɴɢᴇɴᴏᴍᴍᴇɴ.");
 
                 TeleportUtil.teleportWithCountdown(requester, player.getLocation(), plugin);
             } else {
-                player.sendMessage("§cDer Spieler ist nicht mehr online.");
+                player.sendMessage("§8[§#ff8400Tᴘᴀ§8] §cᴅᴇʀ ѕᴘɪᴇʟᴇʀ ɪѕᴛ ɴɪᴄʜᴛ ᴍᴇʜʀ ᴏɴʟɪɴᴇ.");
             }
 
             requests.remove(player.getUniqueId());
@@ -91,14 +91,14 @@ public class TpaCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("tpdeny")) {
             UUID requesterUUID = requests.remove(player.getUniqueId());
             if (requesterUUID == null) {
-                player.sendMessage("\uE006 §cKeine offene Anfrage gefunden.");
+                player.sendMessage("§8[§#ff8400Tᴘᴀ§8] §cᴅᴜ ʜᴀѕᴛ ᴋᴇɪɴᴇ ᴏꜰꜰᴇɴᴇɴ ᴀɴꜰʀᴀɢᴇɴ!");
                 return true;
             }
 
-            player.sendMessage("§cAnfrage abgelehnt.");
+            player.sendMessage("§cᴀɴꜰʀᴀɢᴇ ᴀʙɢᴇʟᴇʜɴᴛ.");
             Player requester = Bukkit.getPlayer(requesterUUID);
             if (requester != null) {
-                requester.sendMessage("§6" + player.getName() + " §chat deine Anfrage abgelehnt.");
+                requester.sendMessage("§6" + player.getName() + " §cʜᴀᴛ ᴅᴇɪɴᴇ ａɴꜰʀᴀɢᴇ ᴀʙɢᴇʟᴇʜɴᴛ.");
             }
             return true;
         }
