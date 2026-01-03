@@ -2,8 +2,8 @@ name: Core
 version: '1.0-SNAPSHOT'
 main: de.jama.core.Main
 api-version: '1.21'
-prefix: 48Core
-authors: [ Jakob48 ]
+prefix: Core
+authors: [ jakob48008, 470Hacker ]
 description: A Core Plugin
 website: jakob48.de
 depend: [LuckPerms]
