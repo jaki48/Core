@@ -29,6 +29,8 @@ public final class Main extends JavaPlugin {
         getCommand("sethome").setExecutor(homeCmd);
         getCommand("home").setExecutor(homeCmd);
 
+        getCommand("fly").setExecutor(new FlyCommand());
+
         getServer().getPluginManager().registerEvents(new DeathMessageListener(), this);
 
         getServer().getPluginManager().registerEvents(new HomeListener(this, homeManager), this);

@@ -39,3 +39,6 @@ commands:
     permission: core.home
     aliases:
       - createhome
+  fly:
+    description: Flugmodus
+    permission: core.admin.fly
