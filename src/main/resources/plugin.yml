@@ -7,6 +7,7 @@ authors: [ jakob48008, 470Hacker ]
 description: A Core Plugin
 website: jakob48.de
 depend: [LuckPerms]
+
 commands:
   spawn:
     description: Teleportiere dich zum Spawn.
@@ -20,9 +21,21 @@ commands:
   tpa:
     description: Sende eine Teleport-Anfrage.
     permission: core.tpa
+    aliases:
+      - tpask
   tpaccept:
     description: Nimm eine TPA an.
     permission: core.tpa
   tpdeny:
     description: Lehne eine TPA ab.
     permission: core.tpa
+  home:
+    description: Öffnet das Home Menü
+    permission: core.home
+    aliases:
+      - homes
+  sethome:
+    description: Setzt ein Home
+    permission: core.home
+    aliases:
+      - createhome
